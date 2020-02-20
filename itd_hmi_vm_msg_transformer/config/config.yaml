@@ -1,0 +1,23 @@
+car:
+  car_name: test
+  from_adu_message_len: 64
+  to_adu_message_len: 1500
+  route_reference:
+    delta_x: 410
+    delta_y: -230
+    longtitude: 121.9232812
+    latitude: 30.8657519
+    height: 4.45
+
+udp:
+  send:
+    ip: 192.168.0.98
+    port: 3333
+  receive:
+    ip: 192.168.0.98
+    port: 8002
+    multicast_ip: ""
+tcp:
+  client:
+    ip: 192.168.1.101
+    port: 9998

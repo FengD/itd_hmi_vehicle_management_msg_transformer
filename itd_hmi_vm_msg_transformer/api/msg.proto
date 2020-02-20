@@ -1,0 +1,47 @@
+syntax="proto3";
+option cc_enable_arenas = true;
+package hirain.itd.hmi.demo.api;
+
+message FromAduMessage{
+  string CarName = 1;
+  int32 PathNum = 2;
+  double XFusion = 3;
+  double YFusion = 4;
+  double YawFusion = 5;
+  float VehicleSpeed = 6;
+  int32 ADVStatus = 7;
+  int32 ADVSwitchReturn = 8;
+  int32 SoftReturn = 9;
+  int32 EmergencyReturn = 10;
+  int32 LocFlag = 11;
+  int32 GPSFlagPos = 12;
+  int32 ActuatorError = 13;
+  int32 SensorError = 14;
+  float EvAim = 15;
+  int32 NaviNum = 16;
+  float CIPO = 17;
+}
+
+message ToAduMessage{
+  enum ActionType {
+    AdvStart = 0;
+    SoftStop = 1;
+    EmergencyStop = 2;
+  }
+
+  int32 PathNumOri = 1;
+  ActionType ADVSwitch = 2;
+}
+
+message Message {
+  enum MessageType {
+    FromAduMessage = 0;
+    ToAduMessage = 1;
+  }
+
+  MessageType type = 1;
+  oneof aduMessage {
+    FromAduMessage from = 2;
+    ToAduMessage to = 3;
+  }
+}
